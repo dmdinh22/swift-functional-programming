@@ -57,3 +57,34 @@ let parkRides = [
          categories: [.family, .relaxing],
          waitTime: 0.0)
 ]
+
+// ## Modularity ##
+func sortedNamesImp(of rides: [Ride]) -> [String] {
+    
+    // 1 - create var
+    var sortedRides = rides
+    var key: Ride
+    
+    // 2 - spin through rides passed in
+    for i in (0..<sortedRides.count) {
+        key = sortedRides[i]
+        
+        // 3 - sort rides using Insertion Sort algo
+        for j in stride(from: i, to: -1, by: -1) {
+            if key.name.localizedCompare(sortedRides[j].name) == .orderedAscending {
+                sortedRides.remove(at: j + 1)
+                sortedRides.insert(key, at: j)
+            }
+        }
+    }
+    
+    // 4 - spin through sorted rides to gather names
+    var sortedNames: [String] = []
+    for ride in sortedRides {
+        sortedNames.append(ride.name)
+    }
+    
+    return sortedNames
+}
+
+let sortedNames1 = sortedNamesImp(of: parkRides)
