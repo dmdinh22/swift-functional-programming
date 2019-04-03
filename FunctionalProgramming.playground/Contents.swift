@@ -88,3 +88,19 @@ func sortedNamesImp(of rides: [Ride]) -> [String] {
 }
 
 let sortedNames1 = sortedNamesImp(of: parkRides)
+
+func testSortedNames(_ names: [String]) {
+    let expected = ["Bumper Boats",
+                    "Crazy Funhouse",
+                    "Grand Carousel",
+                    "Mountain Railroad",
+                    "Raging Rapids",
+                    "Spinning Tea Cups",
+                    "Spooky Hollow",
+                    "Thunder Coaster"]
+    assert(names == expected)
+    print("✅ test sorted names = PASS\n-")
+}
+
+print(sortedNames1)
+testSortedNames(sortedNames1)
