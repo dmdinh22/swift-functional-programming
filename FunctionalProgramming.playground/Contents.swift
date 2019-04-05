@@ -87,6 +87,7 @@ func sortedNamesImp(of rides: [Ride]) -> [String] {
     return sortedNames
 }
 
+// alphabetical sort
 let sortedNames1 = sortedNamesImp(of: parkRides)
 
 func testSortedNames(_ names: [String]) {
@@ -104,3 +105,25 @@ func testSortedNames(_ names: [String]) {
 
 print(sortedNames1)
 testSortedNames(sortedNames1)
+
+// test original list was not mutated
+var originalNames: [String] = []
+for ride in parkRides {
+    originalNames.append(ride.name)
+}
+
+func testOriginalNameOrder(_ names: [String]) {
+    let expected = ["Raging Rapids",
+                    "Crazy Funhouse",
+                    "Spinning Tea Cups",
+                    "Spooky Hollow",
+                    "Thunder Coaster",
+                    "Grand Carousel",
+                    "Bumper Boats",
+                    "Mountain Railroad"]
+    assert(names == expected)
+    print("✅ test original name order = PASS\n-")
+}
+
+print(originalNames)
+testOriginalNameOrder(originalNames)
