@@ -142,6 +142,25 @@ func waitTimeIsShort(_ ride: Ride) -> Bool {
 let shortWaitTimeRides = parkRides.filter(waitTimeIsShort)
 print("rides with a short wait time: \n\(shortWaitTimeRides)")
 
-// passsing a trailing closure
+// passing a trailing closure
 let shortWaitTimeRides2 = parkRides.filter { $0.waitTime < 15.0 }
 print(shortWaitTimeRides2)
+
+// map
+let oranges = apples.map { _ in "🍊" }
+print(oranges)
+
+let rideNames = parkRides.map {$0.name}
+print(rideNames)
+testOriginalNameOrder(rideNames)
+print(rideNames.sorted(by: <))
+
+func sortedNamesFP(_ rides: [Ride]) -> [String] {
+    let rideNames = parkRides.map { $0.name }
+    return rideNames.sorted(by: <)
+}
+
+let sortedNames2 = sortedNamesFP(parkRides)
+testSortedNames(sortedNames2)
+
+
