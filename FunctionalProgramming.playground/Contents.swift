@@ -133,3 +133,15 @@ testOriginalNameOrder(originalNames)
 let apples = ["🍎", "🍏", "🍎", "🍏", "🍏"]
 let greenapples = apples.filter { $0 == "🍏"}
 print(greenapples)
+
+// using filter to filter out rides
+func waitTimeIsShort(_ ride: Ride) -> Bool {
+    return ride.waitTime < 15.0
+}
+
+let shortWaitTimeRides = parkRides.filter(waitTimeIsShort)
+print("rides with a short wait time: \n\(shortWaitTimeRides)")
+
+// passsing a trailing closure
+let shortWaitTimeRides2 = parkRides.filter { $0.waitTime < 15.0 }
+print(shortWaitTimeRides2)
