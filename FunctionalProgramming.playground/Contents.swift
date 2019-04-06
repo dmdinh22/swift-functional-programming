@@ -127,3 +127,9 @@ func testOriginalNameOrder(_ names: [String]) {
 
 print(originalNames)
 testOriginalNameOrder(originalNames)
+
+// ## High order functions (first-class) ##
+// filter
+let apples = ["🍎", "🍏", "🍎", "🍏", "🍏"]
+let greenapples = apples.filter { $0 == "🍏"}
+print(greenapples)
