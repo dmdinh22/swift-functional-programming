@@ -163,4 +163,13 @@ func sortedNamesFP(_ rides: [Ride]) -> [String] {
 let sortedNames2 = sortedNamesFP(parkRides)
 testSortedNames(sortedNames2)
 
+// reduce
+let juice = oranges.reduce("") { juice, orange in juice + "🍹"}
+print("fresh 🍊 juice is served – \(juice)")
+
+let totalWaitTime = parkRides.reduce(0.0) { (total, ride) in
+    total + ride.waitTime
+}
+print("total wait time for all rides = \(totalWaitTime) minutes")
+
 
