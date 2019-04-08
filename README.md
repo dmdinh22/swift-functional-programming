@@ -1,1 +1,2 @@
-# swift-functional-programming
+# Functional Programming W/ SWIFT
+High order functions - raywenderlich
