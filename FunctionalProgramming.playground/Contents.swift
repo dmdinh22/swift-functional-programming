@@ -212,4 +212,27 @@ testShortWaitRides({ waitTime, rides in
     return rides.filter { $0.waitTime < waitTime}
 })
 
+// recursion
+// operator overloading to create functions that allow you to compare two rides
+extension Ride: Comparable {
+    public static func  <(lhs: Ride, rhs: Ride) -> Bool {
+        return lhs.waitTime < rhs.waitTime
+    }
+    
+    public static func ==(lhs: Ride, rhs: Ride) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
+extension Array where Element: Comparable {
+    func quickSorted() -> [Element] {
+        if self.count > 1 {
+            let (pivot, remaining) = (self[0], dropFirst())
+            let lhs = remaining.filter { $0 <= pivot }
+            let rhs = remaining.filter { $0 > pivot }
+            return lhs.quickSorted() + [pivot] + rhs.quickSorted()
+        }
+        return self
+    }
+}
 
