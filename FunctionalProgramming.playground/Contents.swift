@@ -248,3 +248,34 @@ func testSortedByWaitRides(_ rides: [Ride]) {
 
 testSortedByWaitRides(quickSortedRides)
 
+// ## Imperative vs Declarative Style ##
+
+/*
+ Situation
+ A family with young kids wants to go on as many rides as possible between frequent bathroom breaks. They need to find which kid-friendly rides have the shortest lines. Help them out by finding all family rides with wait times less than 20 minutes and sort them by the shortest to longest wait time.
+*/
+
+// Imperative approach
+var ridesOfInterest: [Ride] = []
+for ride in parkRides where ride.waitTime < 20 {
+    for category in ride.categories where category == .family {
+        ridesOfInterest.append(ride)
+        break
+    }
+}
+
+let sortedRidesOfInterest1 = ridesOfInterest.quickSorted()
+print(sortedRidesOfInterest1)
+
+// Imperative test
+func testSortedRidesOfInterest(_ rides: [Ride]) {
+    let names = rides.map { $0.name }.sorted(by: <)
+    let expected = ["Crazy Funhouse",
+                    "Grand Carousel",
+                    "Mountain Railroad"]
+    assert(names == expected)
+    print("✅ test rides of interest = PASS\n-")
+}
+
+testSortedRidesOfInterest(sortedRidesOfInterest1)
+
