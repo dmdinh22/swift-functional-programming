@@ -183,4 +183,26 @@ func filter(for category: RideCategory) -> ([Ride]) -> [Ride] {
 let kidRideFilter = filter(for: .kids)
 print("some good rides for kids are:\n\(kidRideFilter(parkRides))")
 
+// pure functions
+// - always produces same output when given same input
+// - creates zero side effects outside of it
+func ridesWithWaitTimeUnder(_ waitTime: Minutes,
+                            from rides: [Ride]) -> [Ride] {
+    return rides.filter { $0.waitTime < waitTime}
+}
 
+let shortWaitRides = ridesWithWaitTimeUnder(15, from: parkRides)
+
+// easy to write good unit test against pure functions
+func testShortWaitRides(_ testFilter:(Minutes, [Ride]) -> [Ride]) {
+    let limit = Minutes(15)
+    let result = testFilter(limit, parkRides)
+    print("rides with wait less than 15 minutes:\n\(result)")
+    let names = result.map { $0.name }.sorted(by: <)
+    let expected = ["Crazy Funhouse",
+                    "Mountain Railroad"]
+    assert(names == expected)
+    print("✅ test rides with wait time under 15 = PASS\n-")
+}
+
+testShortWaitRides(ridesWithWaitTimeUnder(_:from:))
