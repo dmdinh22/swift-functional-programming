@@ -206,3 +206,10 @@ func testShortWaitRides(_ testFilter:(Minutes, [Ride]) -> [Ride]) {
 }
 
 testShortWaitRides(ridesWithWaitTimeUnder(_:from:))
+
+// referential transparency
+testShortWaitRides({ waitTime, rides in
+    return rides.filter { $0.waitTime < waitTime}
+})
+
+
