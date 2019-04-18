@@ -279,3 +279,11 @@ func testSortedRidesOfInterest(_ rides: [Ride]) {
 
 testSortedRidesOfInterest(sortedRidesOfInterest1)
 
+// Functional approach
+let sortedRidesOfInterest2 = parkRides
+    .filter { $0.categories.contains(.family) && $0.waitTime < 20 }
+    .sorted(by: <)
+
+// Functional test
+testSortedRidesOfInterest(sortedRidesOfInterest2)
+
