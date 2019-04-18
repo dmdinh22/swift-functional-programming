@@ -172,4 +172,15 @@ let totalWaitTime = parkRides.reduce(0.0) { (total, ride) in
 }
 print("total wait time for all rides = \(totalWaitTime) minutes")
 
+// ## Advanced Techniques ##
+// partial functions - encapsulate one function within another
+func filter(for category: RideCategory) -> ([Ride]) -> [Ride] {
+    return { rides in
+        rides.filter { $0.categories.contains(category) }
+    }
+}
+
+let kidRideFilter = filter(for: .kids)
+print("some good rides for kids are:\n\(kidRideFilter(parkRides))")
+
 
