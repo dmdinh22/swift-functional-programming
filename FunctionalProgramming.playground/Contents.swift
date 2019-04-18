@@ -236,3 +236,15 @@ extension Array where Element: Comparable {
     }
 }
 
+let quickSortedRides = parkRides.quickSorted()
+print("\(quickSortedRides)")
+
+
+func testSortedByWaitRides(_ rides: [Ride]) {
+    let expected = rides.sorted(by:  { $0.waitTime < $1.waitTime })
+    assert(rides == expected, "unexpected order")
+    print("✅ test sorted by wait time = PASS\n-")
+}
+
+testSortedByWaitRides(quickSortedRides)
+
